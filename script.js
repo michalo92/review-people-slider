@@ -46,7 +46,6 @@ function displayData(e) {
   personJob.textContent = e.job;
   personInfo.textContent = e.text;
 }
-displayData(reviews[0]);
 
 supriseBtn.addEventListener("click", function () {
   idSet = Math.trunc(Math.random() * reviews.length + 1);
@@ -84,3 +83,4 @@ prevBtn.addEventListener("click", function () {
     });
   idSet === 1 && (prevBtn.disabled = true);
 });
+window.addEventListener("load", displayData(reviews[0]));
