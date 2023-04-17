@@ -28,7 +28,6 @@ const reviews = [
     text: "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
   },
 ];
-
 const personName = document.getElementById("author");
 const personJob = document.getElementById("job");
 const personInfo = document.getElementById("info");
@@ -41,6 +40,7 @@ const supriseBtn = document.querySelector(".random-btn");
 let idSet = 1;
 
 function displayData(e) {
+  idSet === 1 && (prevBtn.disabled = true);
   personImg.src = e.img;
   personName.textContent = e.name;
   personJob.textContent = e.job;
@@ -62,8 +62,8 @@ supriseBtn.addEventListener("click", function () {
 
 nextBtn.addEventListener("click", function () {
   prevBtn.disabled = false;
-  idSet++;
-  idSet <= reviews.length + 1 &&
+  ++idSet;
+  idSet <= reviews.length &&
     reviews.forEach((e) => {
       if (e.id === idSet) {
         displayData(e);
@@ -74,7 +74,8 @@ nextBtn.addEventListener("click", function () {
 
 prevBtn.addEventListener("click", function () {
   nextBtn.disabled = false;
-  idSet--;
+  --idSet;
+  console.log(idSet);
   idSet >= 1 &&
     reviews.forEach((e) => {
       if (e.id === idSet) {
